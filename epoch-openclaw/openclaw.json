@@ -1,0 +1,207 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.4.15",
+    "lastTouchedAt": "2026-04-26T13:59:30.069Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-04-26T13:59:29.766Z",
+    "lastRunVersion": "2026.4.15",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local"
+  },
+  "browser": {
+    "enabled": true,
+    "headless": true,
+    "noSandbox": true
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "kilocode/kilo-auto/balanced"
+      },
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "timeoutSeconds": 600,
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "default": true,
+        "workspace": "/root/.openclaw/workspace",
+        "tools": {
+          "profile": "full"
+        }
+      },
+      {
+        "id": "cluster",
+        "workspace": "/root/.openclaw/workspace-cluster"
+      },
+      {
+        "id": "merc",
+        "workspace": "/root/.openclaw/workspace-merc"
+      }
+    ]
+  },
+  "tools": {
+    "profile": "full",
+    "web": {
+      "search": {
+        "enabled": true,
+        "provider": "kilo-exa"
+      }
+    },
+    "agentToAgent": {
+      "enabled": true,
+      "allow": [
+        "main",
+        "cluster",
+        "merc"
+      ]
+    },
+    "exec": {
+      "host": "gateway",
+      "security": "full",
+      "ask": "off"
+    }
+  },
+  "bindings": [
+    {
+      "agentId": "main",
+      "match": {
+        "channel": "telegram",
+        "accountId": "default"
+      }
+    },
+    {
+      "agentId": "cluster",
+      "match": {
+        "channel": "telegram",
+        "accountId": "cluster"
+      }
+    },
+    {
+      "agentId": "merc",
+      "match": {
+        "channel": "telegram",
+        "accountId": "merc"
+      }
+    }
+  ],
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "web": {},
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "botToken": "REDACTED",
+      "groupPolicy": "allowlist",
+      "streaming": {
+        "mode": "partial"
+      },
+      "allowFrom": []
+    },
+    "streamchat": {
+      "apiKey": "tgvk4c8hgjxd",
+      "botUserId": "bot-ZTliOGE5OWYtNDU5Ny00Y2QwLWI1ZGMtYjA3YTA1NzhkOTVj",
+      "botUserToken": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiYm90LVpUbGlPR0U1T1dZdE5EVTVOeTAwWTJRd0xXSTFaR010WWpBM1lUQTFOemhrT1RWaiJ9.9XaCN-DqSyjwHMmJ54iIRgPyBzorsR42pnNqdJaPWvo",
+      "botUserName": "KiloClaw",
+      "enabled": true
+    }
+  },
+  "gateway": {
+    "port": 3001,
+    "mode": "local",
+    "bind": "loopback",
+    "controlUi": {
+      "allowedOrigins": [
+        "https://claw.kilosessions.ai",
+        "https://kilo.ai",
+        "https://www.kilo.ai"
+      ],
+      "allowInsecureAuth": true
+    },
+    "auth": {
+      "mode": "token",
+      "token": "REDACTED"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "reload": {
+      "mode": "restart"
+    }
+  },
+  "plugins": {
+    "entries": {
+      "telegram": {
+        "enabled": true
+      },
+      "openclaw-channel-streamchat": {
+        "enabled": true
+      },
+      "kilocode": {
+        "enabled": true
+      },
+      "browser": {
+        "enabled": true
+      },
+      "kiloclaw-customizer": {
+        "enabled": true,
+        "config": {
+          "webSearch": {
+            "enabled": true
+          }
+        }
+      },
+      "kiloclaw-morning-briefing": {
+        "enabled": true
+      }
+    },
+    "load": {
+      "paths": [
+        "/usr/local/lib/node_modules/@wunderchat/openclaw-channel-streamchat",
+        "/usr/local/lib/node_modules/@kiloclaw/kiloclaw-customizer",
+        "/usr/local/lib/node_modules/@kiloclaw/kiloclaw-morning-briefing"
+      ]
+    }
+  },
+  "update": {
+    "checkOnStart": false
+  },
+  "hooks": {
+    "enabled": true,
+    "token": "46a115a1ee940aa90787a753c4d86069c6ed2dfc9a6bbb6fdb8aef2b47485b92",
+    "path": "/hooks",
+    "mappings": [
+      {
+        "id": "cloudflare-email-inbound",
+        "match": {
+          "path": "email"
+        },
+        "action": "agent",
+        "wakeMode": "now",
+        "name": "Inbound Email",
+        "sessionKey": "{{payload.sessionKey}}",
+        "messageTemplate": "From: {{payload.from}}\nSubject: {{payload.subject}}\n\n{{payload.text}}",
+        "deliver": false
+      }
+    ]
+  }
+}
