@@ -80,71 +80,13 @@
   <section class="section events" id="events">
     <div class="container">
       <div class="section-tag">Events</div>
-      <h2>Upcoming Sessions</h2>
-
-      <!-- EVENT CARD EXAMPLE — swap in real details when ready -->
-      <div class="event-card" id="event-solar-miner">
-        <div class="event-meta">
-          <span class="event-date">🗓️ Coming Soon</span>
-          <span class="event-venue">📍 Winchester, VA</span>
-        </div>
-        <h3>Solar Bitcoin Miner Build</h3>
-        <p>Build a fully functional solar-powered solo Bitcoin miner from scratch. All parts included. No experience needed.</p>
-        <div class="event-details">
-          <span>⏱️ ~90 minutes</span>
-          <span>👥 Limited to 15 seats</span>
-          <span>💵 $65/person</span>
-        </div>
-        <div class="event-actions">
-          <button class="btn-primary" onclick="buyTicket('solar-miner', 'Solar Bitcoin Miner Build', 'Coming Soon', 65)" id="btn-solar-miner">
-            Get Tickets
-          </button>
-          <span class="seats-left" id="seats-solar-miner"></span>
-        </div>
-      </div>
-
-      <!-- COMING SOON FALLBACK (hidden when events are active) -->
-      <!--
-      <div class="event-card coming-soon">
-        <div class="event-icon">🗓️</div>
-        <h3>First event coming soon</h3>
-        <p>We're finalizing our first session date and venue. Sign up below to be the first to know.</p>
-        <a href="#signup" class="btn-primary">Notify Me</a>
-      </div>
-      -->
+      <h2>Sessions Calendar</h2>
+      <p class="lead" style="margin-bottom: 1.5rem;">Click on a date to see session details and get tickets. Scroll month-to-month to explore upcoming events.</p>
+      <div id="calendarWidget"></div>
     </div>
   </section>
 
-  <script>
-    async function buyTicket(eventId, eventName, eventDate, price) {
-      const btn = document.getElementById('btn-' + eventId);
-      btn.textContent = 'Loading...';
-      btn.disabled = true;
-
-      try {
-        const res = await fetch('/api/create-checkout', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ eventId, eventName, eventDate, price })
-        });
-        const data = await res.json();
-
-        if (data.error === 'sold_out') {
-          btn.textContent = 'Sold Out';
-          return;
-        }
-        if (data.url) {
-          window.location.href = data.url;
-        } else {
-          btn.textContent = 'Get Tickets';
-          btn.disabled = false;
-        }
-      } catch (e) {
-        btn.textContent = 'Get Tickets';
-        btn.disabled = false;
-      }
-    }
-  </script>
+  <script src="calendar.js"></script>
 
   <!-- WHO IS THIS FOR -->
   <section class="section audience">

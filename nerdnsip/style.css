@@ -508,6 +508,167 @@ h1, h2, h3 {
 
 .footer-fine {
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: var-text-muted);
   opacity: 0.7;
+}
+
+/* ---- CALENDAR WIDGET ---- */
+#calendarWidget {
+  max-width: 720px;
+  margin: 2rem auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.cal-month {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+
+.cal-nav {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  font-size: 1.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cal-nav:hover {
+  background: var(--glow);
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.cal-weekday {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.cal-day {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  position: relative;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.cal-day.empty {
+  cursor: default;
+}
+
+.cal-day.has-events {
+  background: var(--glow);
+  border: 1px solid var(--accent-dim);
+}
+
+.cal-day.has-events:hover {
+  background: rgba(201, 168, 76, 0.25);
+}
+
+.cal-day.past {
+  opacity: 0.4;
+}
+
+.cal-day.past.has-events {
+  cursor: not-allowed;
+}
+
+.cal-day-number {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.cal-event-dots {
+  display: flex;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.event-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* Day Detail Panel */
+.day-detail {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.day-detail h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.no-events {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.day-event-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.day-event-card h5 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.event-time, .event-venue, .event-price, .event-seats {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
 }

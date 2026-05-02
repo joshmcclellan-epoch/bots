@@ -1,0 +1,85 @@
+{
+  "sessions": [
+    {
+      "id": "solar-miner",
+      "name": "Solar Bitcoin Miner Build",
+      "description": "Build a fully functional solar-powered solo Bitcoin miner from scratch. All parts included — ESP32 microcontroller, 18650 rechargeable battery, solar cell, and LCD display showing live mining stats. No experience needed.",
+      "duration": "~90 minutes",
+      "price": 65,
+      "maxSeats": 15,
+      "venue": "Winchester, VA area",
+      "instructor": "Josh McClellan",
+      "includes": [
+        "ESP32 microcontroller (pre-flashed)",
+        "18650 rechargeable battery + charging circuit",
+        "Solar cell",
+        "LCD display showing mining stats",
+        "All cables and housing"
+      ],
+      "events": [
+        {
+          "id": "solar-miner-001",
+          "date": "2026-06-15",
+          "time": "7:00 PM - 8:30 PM",
+          "venue": "Local Bar, Winchester, VA",
+          "seatsSold": 0
+        }
+      ]
+    },
+    {
+      "id": "arduino-weather",
+      "name": "Arduino Weather Station",
+      "description": "Build your own desktop weather station with temperature, humidity, and atmospheric pressure readings. Features a custom OLED display with icons and trend arrows.",
+      "duration": "~2 hours",
+      "price": 55,
+      "maxSeats": 12,
+      "venue": "Winchester, VA area",
+      "instructor": "Josh McClellan",
+      "includes": [
+        "Arduino Uno R3",
+        "DHT22 temperature/humidity sensor",
+        "BMP280 pressure sensor",
+        "OLED display",
+        "Breadboard and jumper wires"
+      ],
+      "events": []
+    },
+    {
+      "id": "led-matrix",
+      "name": "LED Matrix Art Display",
+      "description": "Create a programmable 8x8 LED matrix art display. Learn basic programming to create animations, scrolling text, and custom pixel art that runs on battery power.",
+      "duration": "~90 minutes",
+      "price": 45,
+      "maxSeats": 15,
+      "venue": "Winchester, VA area",
+      "instructor": "Josh McClellan",
+      "includes": [
+        "8x8 LED matrix + MAX7219 driver",
+        "Arduino Nano",
+        "USB cable for programming",
+        "Battery pack with switch",
+        "Laser-cut enclosure"
+      ],
+      "events": []
+    },
+    {
+      "id": "raspberry-pi-iot",
+      "name": "Raspberry Pi IoT Sensor",
+      "description": "Build an IoT (Internet of Things) sensor that monitors your home and sends alerts to your phone. Learn the basics of Python and cloud connectivity.",
+      "duration": "~2.5 hours",
+      "price": 75,
+      "maxSeats": 10,
+      "venue": "Winchester, VA area",
+      "instructor": "Josh McClellan",
+      "includes": [
+        "Raspberry Pi Zero W",
+        "DHT22 sensor",
+        "PIR motion sensor",
+        "Magnetic door sensor",
+        "Case and power supply",
+        "Pre-configured SD card"
+      ],
+      "events": []
+    }
+  ]
+}
